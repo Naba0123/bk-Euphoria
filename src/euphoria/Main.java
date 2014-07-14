@@ -1,8 +1,12 @@
 package euphoria;
 
-public class Main {
+import euphoria.frame.MainFrame;
+
+public class Main extends MainFrame {
 
 	public static void main(String[] args) {
-		System.out.println("Hello, Euphoria Time!");
+		MainFrame.setFrame();
+		MainFrame.show();
 	}
+
 }
