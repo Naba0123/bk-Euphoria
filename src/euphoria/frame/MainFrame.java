@@ -17,8 +17,6 @@ public class MainFrame {
 
 	/** MainFrameのJFrame */
 	private static JFrame frame;
-	/** MainFrameのタイトル */
-	private static String title = new String("Euphoria");
 	/** MainFrameの幅 */
 	private static final int width = 960;
 	/** MainFrameの高さ */
@@ -27,7 +25,8 @@ public class MainFrame {
 	private static final boolean canResize = false;
 
 	/**
-	 * MainFrameのコンストラクタ。実質機能しないわね(´・ω・｀)
+	 * MainFrameのコンストラクタ。<br>
+	 * 実質機能しないわね(´・ω・｀)
 	 */
 	public MainFrame() {
 	}
@@ -35,8 +34,7 @@ public class MainFrame {
 	/**
 	 * MainFrameのタイトルを変更する
 	 *
-	 * @param title
-	 *            変更後のタイトル
+	 * @param title 変更後のタイトル
 	 */
 	public static void setTitle(String title) {
 		frame.setTitle(title);
@@ -60,8 +58,8 @@ public class MainFrame {
 	 * MainFrameの初期設定を行う。 このメソッドはサブクラスからしかアクセスすることはできない。
 	 */
 	protected static void setFrame() {
-		// frameの定義とタイトルの設定
-		frame = new JFrame(title);
+		// frameの定義
+		frame = new JFrame();
 		// フレーム初期サイズの設定
 		frame.setSize(new Dimension(width, height));
 		// フレームのサイズを変更できないようにする
