@@ -145,7 +145,7 @@ public class DB {
 		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) { // ignore }
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
