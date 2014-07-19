@@ -32,10 +32,12 @@ public class Main extends MainFrame {
 
 		// ##### この行からデバッグ #####
 
+		Test.Do();
+
 		// ##### この行までデバッグ #####
 
 		// MainFrameの表示
-		MainFrame.show();
+		// MainFrame.show();
 	}
 
 	public static void loadConfig() {
@@ -44,7 +46,7 @@ public class Main extends MainFrame {
 		generalConf.loadConf(generalConfFile);
 
 		// dbConfigFileの読み込み
-		DB.CheckDBConfigFile(dbConfigFile);
+		DB.checkDBConfigFile(dbConfigFile);
 
 	}
 

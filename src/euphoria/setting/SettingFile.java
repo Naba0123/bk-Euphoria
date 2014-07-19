@@ -85,6 +85,7 @@ public class SettingFile {
 			e.printStackTrace();
 			return false;
 		}
+		System.out.println("設定ファイル\"" + confFilename + "\"に設定を書き込みました。");
 		return true;
 	}
 
@@ -106,15 +107,15 @@ public class SettingFile {
 	public boolean createNewFile() {
 		File file = new File(confFilename);
 		if (file.exists()) {
-			System.err.println(confFilename + "というファイルは既に存在しています。");
+			System.err.println("ファイル\"" + confFilename + "\"は既に存在しています。");
 			return false;
 		} else {
 			try {
 				file.createNewFile();
-				System.out.println(confFilename + "ファイルが生成されました。");
+				System.out.println("ファイル\"" + confFilename + "\"が生成されました。");
 				return true;
 			} catch (IOException e) {
-				System.err.println(confFilename + "ファイルが生成できませんでした。");
+				System.err.println("ファイル\"" + confFilename + "\"が生成できませんでした。");
 				e.printStackTrace();
 				return false;
 			}
