@@ -9,16 +9,16 @@ import java.util.Properties;
 public class SettingFile {
 
 	/** Configファイル */
-	private Properties confFile;
+	private Properties config;
 	/** Configファイルの名前 */
-	private String confFilename;
+	private String configFilename;
 
 	/**
 	 * SettingFileのコンストラクタ。<br>
-	 * Propertiesクラスのインスタンスconfを定義する。
+	 * Propertiesクラスのインスタンスconfigを定義する。
 	 */
 	public SettingFile() {
-		confFile = new Properties();
+		config = new Properties();
 	}
 
 	/**
@@ -28,19 +28,19 @@ public class SettingFile {
 	 * @return XMLの読み込みに成功した場合はtrue，失敗した場合はfalse
 	 */
 	public boolean loadConf(String filename) {
-		confFilename = new String(filename);
+		configFilename = new String(filename);
 		if (new File(filename).exists()) {
 			try {
-				confFile.loadFromXML(new FileInputStream(filename));
-				System.out.println("Open " + filename + ".");
+				config.loadFromXML(new FileInputStream(filename));
+				System.out.println("設定ファイル\"" + filename + "\"を開きました。");
 				return true;
 			} catch (IOException e) {
-				System.err.println("Cannot open " + filename + ".");
+				System.err.println("設定ファイル\"" + filename + "\"が開けません。");
 				e.printStackTrace();
 				return false;
 			}
 		} else {
-			System.err.println("Cannot found \"" + filename + "\".");
+			System.err.println("設定ファイル\"" + filename + "\"が見つかりません。");
 			return false;
 		}
 	}
@@ -52,10 +52,10 @@ public class SettingFile {
 	 * @return 対応する値がある場合はその値，ない場合は""(空白)を返す
 	 */
 	public String getProperty(String key) {
-		if (confFile.containsKey(key))
-			return confFile.getProperty(key);
+		if (config.containsKey(key))
+			return config.getProperty(key);
 		else {
-			System.err.println("Key not found: " + key);
+			System.err.println("キー\"" + key + "\"が見つかりません。");
 			return "";
 		}
 	}
@@ -68,7 +68,7 @@ public class SettingFile {
 	 * @param value キーに代入する値
 	 */
 	public void setProperty(String key, String value) {
-		confFile.setProperty(key, value);
+		config.setProperty(key, value);
 	}
 
 	/**
@@ -79,13 +79,13 @@ public class SettingFile {
 	 */
 	public boolean storeToXML(String comments) {
 		try {
-			confFile.storeToXML(new FileOutputStream(confFilename), comments);
+			config.storeToXML(new FileOutputStream(configFilename), comments);
 		} catch (IOException e) {
-			System.err.println("Cannot open " + confFilename + ".");
+			System.err.println("設定ファイル\"" + configFilename + "\"が開けません。");
 			e.printStackTrace();
 			return false;
 		}
-		System.out.println("設定ファイル\"" + confFilename + "\"に設定を書き込みました。");
+		System.out.println("設定ファイル\"" + configFilename + "\"に設定を書き込みました。");
 		return true;
 	}
 
@@ -94,8 +94,8 @@ public class SettingFile {
 	 *
 	 * @return 設定ファイル名
 	 */
-	public String getConfigFileName() {
-		return confFilename;
+	public String getConfigFilename() {
+		return configFilename;
 	}
 
 	/**
@@ -105,17 +105,17 @@ public class SettingFile {
 	 * @return ファイルの生成に成功すればtrue，失敗すればfalse。
 	 */
 	public boolean createNewFile() {
-		File file = new File(confFilename);
+		File file = new File(configFilename);
 		if (file.exists()) {
-			System.err.println("ファイル\"" + confFilename + "\"は既に存在しています。");
+			System.err.println("ファイル\"" + configFilename + "\"は既に存在しています。");
 			return false;
 		} else {
 			try {
 				file.createNewFile();
-				System.out.println("ファイル\"" + confFilename + "\"が生成されました。");
+				System.out.println("ファイル\"" + configFilename + "\"が生成されました。");
 				return true;
 			} catch (IOException e) {
-				System.err.println("ファイル\"" + confFilename + "\"が生成できませんでした。");
+				System.err.println("ファイル\"" + configFilename + "\"が生成できませんでした。");
 				e.printStackTrace();
 				return false;
 			}

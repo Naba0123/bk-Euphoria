@@ -13,6 +13,9 @@ import javax.swing.UIManager;
  */
 public class MainFrame {
 
+	/** アプリケーション名 */
+	private static String applicationTitle = "Euphoria";
+
 	// MainFrameの定義
 
 	/** MainFrameのJFrame */
@@ -60,6 +63,8 @@ public class MainFrame {
 	protected static void setFrame() {
 		// frameの定義
 		frame = new JFrame();
+		// MainFrameのタイトルのセット
+		frame.setTitle(applicationTitle);
 		// フレーム初期サイズの設定
 		frame.setSize(new Dimension(width, height));
 		// フレームのサイズを変更できないようにする

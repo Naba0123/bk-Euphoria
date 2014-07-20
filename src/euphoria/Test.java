@@ -18,7 +18,7 @@ public class Test {
 		// Queryの取得
 		System.out.print("SQL文の入力をしてください ＞ ");
 		String query = inputFromKeyboard();
-		ResultSet rs = DB.doSQLQuery(query);
+		ResultSet rs = DB.executeSQLQuery(query);
 		if (rs != null) {
 			try {
 				while (rs.next()) {

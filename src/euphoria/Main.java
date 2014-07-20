@@ -1,8 +1,7 @@
 package euphoria;
 
-import euphoria.db.DB;
 import euphoria.frame.MainFrame;
-import euphoria.setting.SettingFile;
+import euphoria.setting.Config;
 
 /**
  * Euphoriaのmainメソッドがあるクラス
@@ -12,49 +11,22 @@ import euphoria.setting.SettingFile;
  */
 public class Main extends MainFrame {
 
-	/** アプリケーション名 */
-	public static final String applicationTitle = "Euphoria";
-
-	/** 全般設定に関する設定ファイル */
-	private static SettingFile generalConf; // 本来はこの設定を必要としているクラスに置く
-	/** 全般設定に関する設定ファイルの名前 */
-	private static final String generalConfFile = "generalConf.xml";
-	/** データベース接続情報に関する設定ファイルの名前 */
-	private static final String dbConfigFile = "dbConf.xml";
-
 	public static void main(String[] args) {
 
 		// 設定ファイルを読み込む
-		loadConfig();
+		Config.loadConf();
 
 		// フレームに関する準備をする。
-		readyFrame();
+		MainFrame.setFrame();
 
 		// ##### この行からデバッグ #####
 
-		Test.Do();
+		//		Test.Do();
 
 		// ##### この行までデバッグ #####
 
 		// MainFrameの表示
-		// MainFrame.show();
-	}
-
-	public static void loadConfig() {
-		// generalConfFileの読み込み
-		generalConf = new SettingFile(); // この読み込み作業は本来は必要としているクラスに置く
-		generalConf.loadConf(generalConfFile);
-
-		// dbConfigFileの読み込み
-		DB.checkDBConfigFile(dbConfigFile);
-
-	}
-
-	public static void readyFrame() {
-		// MainFrameのセット
-		MainFrame.setFrame();
-		// MainFrameのタイトルのセット
-		MainFrame.setTitle(applicationTitle);
+		MainFrame.show();
 	}
 
 }
