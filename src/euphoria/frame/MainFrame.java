@@ -1,5 +1,6 @@
 package euphoria.frame;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -46,21 +47,31 @@ public class MainFrame {
 	/**
 	 * MainFrameを可視状態にする。
 	 */
-	public static void show() {
+	public static void showFrame() {
 		frame.setVisible(true);
 	}
 
 	/**
 	 * MainFrameを不可視状態にする。
 	 */
-	public static void hide() {
+	public static void hideFrame() {
 		frame.setVisible(false);
 	}
 
 	/**
-	 * MainFrameの初期設定を行う。 このメソッドはサブクラスからしかアクセスすることはできない。
+	 * プログラム実行に必要なFrameのセットを行う。
 	 */
-	protected static void setFrame() {
+	public static void readyFrame() {
+		// Frameの全体設定
+		setDefaultFrame();
+		// タブの設定
+		setMainTabbed();
+	}
+
+	/**
+	 * MainFrameの初期設定を行う。
+	 */
+	private static void setDefaultFrame() {
 		// frameの定義
 		frame = new JFrame();
 		// MainFrameのタイトルのセット
@@ -81,6 +92,16 @@ public class MainFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * MainTabbedの設定を行う。
+	 */
+	private static void setMainTabbed() {
+		// 全体のタブ
+		MainTab mainTabbed = new MainTab();
+		// タブをフレームに追加
+		frame.getContentPane().add(mainTabbed, BorderLayout.CENTER);
 	}
 
 }

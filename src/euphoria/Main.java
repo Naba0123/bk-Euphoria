@@ -9,7 +9,7 @@ import euphoria.setting.Config;
  * @author PenNanban
  *
  */
-public class Main extends MainFrame {
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -17,16 +17,16 @@ public class Main extends MainFrame {
 		Config.loadConf();
 
 		// フレームに関する準備をする。
-		MainFrame.setFrame();
+		MainFrame.readyFrame();
 
 		// ##### この行からデバッグ #####
 
-		//		Test.Do();
+		// Test.Do();
 
 		// ##### この行までデバッグ #####
 
 		// MainFrameの表示
-		MainFrame.show();
+		MainFrame.showFrame();
 	}
 
 }
