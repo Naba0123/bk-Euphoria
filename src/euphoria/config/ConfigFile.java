@@ -1,4 +1,4 @@
-package euphoria.setting;
+package euphoria.config;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class SettingFile {
+public class ConfigFile {
 
 	/** Configファイル */
 	private Properties config;
@@ -17,7 +17,7 @@ public class SettingFile {
 	 * SettingFileのコンストラクタ。<br>
 	 * Propertiesクラスのインスタンスconfigを定義する。
 	 */
-	public SettingFile() {
+	public ConfigFile() {
 		config = new Properties();
 	}
 

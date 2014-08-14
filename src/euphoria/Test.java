@@ -6,11 +6,15 @@ import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import euphoria.db.DB;
+import euphoria.config.DB;
 
 public class Test {
 
-	public static void Do() {
+	public Test() {
+		Do();
+	}
+
+	public void Do() {
 
 		// Databaseとの接続
 		DB.connectDB();
@@ -41,7 +45,7 @@ public class Test {
 	 *
 	 * @return キーボードから入力された文字列。入力に失敗するとnullを返す。
 	 */
-	private static String inputFromKeyboard() {
+	private String inputFromKeyboard() {
 		String str = null;
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 		try {

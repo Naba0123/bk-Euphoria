@@ -64,8 +64,8 @@ public class MainFrame {
 	public static void readyFrame() {
 		// Frameの全体設定
 		setDefaultFrame();
-		// タブの設定
-		setMainTabbed();
+		// Frameのコンテンツのセット
+		setFrameContents();
 	}
 
 	/**
@@ -95,13 +95,13 @@ public class MainFrame {
 	}
 
 	/**
-	 * MainTabbedの設定を行う。
+	 * Frameのコンテンツのセットを行う
 	 */
-	private static void setMainTabbed() {
+	private static void setFrameContents() {
 		// 全体のタブ
-		MainTab mainTabbed = new MainTab();
+		MainTabbed.readyTabbed();
 		// タブをフレームに追加
-		frame.getContentPane().add(mainTabbed, BorderLayout.CENTER);
+		frame.getContentPane().add(MainTabbed.getTabbed(), BorderLayout.CENTER);
 	}
 
 }

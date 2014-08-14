@@ -1,12 +1,10 @@
-package euphoria.db;
+package euphoria.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import euphoria.setting.Config;
 
 public class DB {
 
@@ -52,7 +50,13 @@ public class DB {
 	 */
 	public static boolean connectDB() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://" + Config.dbHost + ":" + Config.dbPort + "/" + Config.dbName + "?user=" + Config.dbUsername + "&password=" + Config.dbPassword);
+			conn = DriverManager.getConnection("" +
+			        "jdbc:mysql://" + Config.configDB.dbHost +
+			        ":" + Config.configDB.dbPort +
+			        "/" + Config.configDB.dbName +
+			        "?user=" + Config.configDB.dbUsername +
+			        "&password=" + Config.configDB.dbPassword
+			        );
 			stat = conn.createStatement();
 			System.out.println("データベースに接続しました。");
 			return true;

@@ -1,7 +1,7 @@
 package euphoria;
 
+import euphoria.config.Config;
 import euphoria.frame.MainFrame;
-import euphoria.setting.Config;
 
 /**
  * Euphoriaのmainメソッドがあるクラス
@@ -21,7 +21,7 @@ public class Main {
 
 		// ##### この行からデバッグ #####
 
-		// Test.Do();
+		new Test();
 
 		// ##### この行までデバッグ #####
 
