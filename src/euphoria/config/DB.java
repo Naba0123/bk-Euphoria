@@ -10,15 +10,14 @@ public class DB {
 
 	// Connection
 	/** Connection */
-	private static Connection conn = null;
+	private Connection conn = null;
 	/** Queryを実行するためのStatement */
-	private static Statement stat = null;
+	private Statement stat = null;
 
 	/**
-	 * DBのコンストラクタ。<br>
-	 * staticだから実質機能しｎ（ｒｙ
+	 * DBのコンストラクタ
 	 */
-	DB() {
+	public DB() {
 	}
 
 	/**
@@ -27,7 +26,7 @@ public class DB {
 	 * @param queryStr 実行したいSQL文
 	 * @return 実行結果。実行できない、もしくは結果が無い場合はnullを返す。
 	 */
-	public static ResultSet executeSQLQuery(String queryStr) {
+	public ResultSet executeSQLQuery(String queryStr) {
 		ResultSet rs = null;
 		if (isConnectDB()) {
 			try {
@@ -48,14 +47,14 @@ public class DB {
 	 *
 	 * @return 接続に成功すればture，失敗すればfalseを返す。
 	 */
-	public static boolean connectDB() {
+	public boolean connectDB(ConfigDB configDB) {
 		try {
 			conn = DriverManager.getConnection("" +
-			        "jdbc:mysql://" + Config.configDB.dbHost +
-			        ":" + Config.configDB.dbPort +
-			        "/" + Config.configDB.dbName +
-			        "?user=" + Config.configDB.dbUsername +
-			        "&password=" + Config.configDB.dbPassword
+			        "jdbc:mysql://" + configDB.dbHost +
+			        ":" + configDB.dbPort +
+			        "/" + configDB.dbName +
+			        "?user=" + configDB.dbUsername +
+			        "&password=" + configDB.dbPassword
 			        );
 			stat = conn.createStatement();
 			System.out.println("データベースに接続しました。");
@@ -71,7 +70,7 @@ public class DB {
 	 * データベースを切断する。<br>
 	 * Statement, Connectionにはnullが入る。
 	 */
-	public static void closeDB() {
+	public void closeDB() {
 		// Statementの切断
 		if (stat != null) {
 			try {
@@ -98,7 +97,7 @@ public class DB {
 	 *
 	 * @return 接続している状態ならtrue，接続されていない状態ならfalseを返す。
 	 */
-	public static boolean isConnectDB() {
+	public boolean isConnectDB() {
 		if (conn == null) {
 			return false;
 		} else {

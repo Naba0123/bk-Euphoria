@@ -1,8 +1,8 @@
-package euphoria.frame.panel;
+package euphoria.frame;
 
 import javax.swing.JPanel;
 
-public class WhatsNew {
+public class TabbedWhatsNew {
 
 	/** Panel */
 	private JPanel panel;

@@ -14,25 +14,25 @@ import javax.swing.UIManager;
  */
 public class MainFrame {
 
-	/** アプリケーション名 */
-	private static String applicationTitle = "Euphoria";
-
-	// MainFrameの定義
-
+	/** MainFrameのタイトル */
+	private String mainFrameTitle = "Euphoria";
 	/** MainFrameのJFrame */
-	private static JFrame frame;
+	private JFrame frame;
+	/** MainFramenoJTabbed */
+	private Tabbed tabbed;
 	/** MainFrameの幅 */
-	private static final int width = 960;
+	private final int width = 960;
 	/** MainFrameの高さ */
-	private static final int height = 540;
+	private final int height = 540;
 	/** MainFrameのウィンドウサイズ変更の可否 */
-	private static final boolean canResize = false;
+	private final boolean canResize = false;
 
 	/**
-	 * MainFrameのコンストラクタ。<br>
-	 * 実質機能しないわね(´・ω・｀)
+	 * MainFrameのコンストラクタ。
 	 */
 	public MainFrame() {
+		// frameの定義
+		frame = new JFrame();
 	}
 
 	/**
@@ -40,42 +40,40 @@ public class MainFrame {
 	 *
 	 * @param title 変更後のタイトル
 	 */
-	public static void setTitle(String title) {
+	public void setFrameTitle(String title) {
 		frame.setTitle(title);
 	}
 
 	/**
 	 * MainFrameを可視状態にする。
 	 */
-	public static void showFrame() {
+	public void showFrame() {
 		frame.setVisible(true);
 	}
 
 	/**
 	 * MainFrameを不可視状態にする。
 	 */
-	public static void hideFrame() {
+	public void hideFrame() {
 		frame.setVisible(false);
 	}
 
 	/**
-	 * プログラム実行に必要なFrameのセットを行う。
+	 * プログラム実行に必要なFrameの設定を行う。
 	 */
-	public static void readyFrame() {
-		// Frameの全体設定
-		setDefaultFrame();
-		// Frameのコンテンツのセット
+	public void readyFrame() {
+		// MainFrameの初期設定
+		setFrameDefault();
+		// MainFrameのコンテンツの設定
 		setFrameContents();
 	}
 
 	/**
 	 * MainFrameの初期設定を行う。
 	 */
-	private static void setDefaultFrame() {
-		// frameの定義
-		frame = new JFrame();
-		// MainFrameのタイトルのセット
-		frame.setTitle(applicationTitle);
+	private void setFrameDefault() {
+		// MainFrameのタイトルの設定
+		frame.setTitle(mainFrameTitle);
 		// フレーム初期サイズの設定
 		frame.setSize(new Dimension(width, height));
 		// フレームのサイズを変更できないようにする
@@ -95,13 +93,13 @@ public class MainFrame {
 	}
 
 	/**
-	 * Frameのコンテンツのセットを行う
+	 * Frameのコンテンツの設定を行う
 	 */
-	private static void setFrameContents() {
+	private void setFrameContents() {
 		// 全体のタブ
-		MainTabbed.readyTabbed();
+		tabbed.readyTabbed();
 		// タブをフレームに追加
-		frame.getContentPane().add(MainTabbed.getTabbed(), BorderLayout.CENTER);
+		frame.getContentPane().add(tabbed.getTabbed(), BorderLayout.CENTER);
 	}
 
 }

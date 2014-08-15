@@ -1,8 +1,5 @@
 package euphoria;
 
-import euphoria.config.Config;
-import euphoria.frame.MainFrame;
-
 /**
  * Euphoriaのmainメソッドがあるクラス
  *
@@ -11,22 +8,15 @@ import euphoria.frame.MainFrame;
  */
 public class Main {
 
+	/**
+	 * Programクラスに丸投げします。
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
-		// 設定ファイルを読み込む
-		Config.loadConf();
+		Program program = new Program();
+		program.doAction();
 
-		// フレームに関する準備をする。
-		MainFrame.readyFrame();
-
-		// ##### この行からデバッグ #####
-
-		new Test();
-
-		// ##### この行までデバッグ #####
-
-		// MainFrameの表示
-		MainFrame.showFrame();
 	}
 
 }

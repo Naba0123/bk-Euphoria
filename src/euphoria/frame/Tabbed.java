@@ -2,25 +2,21 @@ package euphoria.frame;
 
 import javax.swing.JTabbedPane;
 
-import euphoria.frame.panel.WhatsNew;
-
-public class MainTabbed {
+public class Tabbed {
 
 	/** Tabbed */
-	private static JTabbedPane mainTabbed;
+	private JTabbedPane mainTabbed;
 	/** What's New タブ */
-	private static WhatsNew whatsNew;
+	private TabbedWhatsNew whatsNew;
 
 	/**
 	 * タブの設定を行う
 	 */
-	public static void readyTabbed() {
+	public void readyTabbed() {
 		// タブの定義
 		mainTabbed = new JTabbedPane();
-
 		// Panelの定義
-		whatsNew = new WhatsNew();
-
+		whatsNew = new TabbedWhatsNew();
 		// Panelの追加
 		addPanel();
 	}
@@ -28,7 +24,7 @@ public class MainTabbed {
 	/**
 	 * タブにPanelを追加する
 	 */
-	private static void addPanel() {
+	private void addPanel() {
 		mainTabbed.addTab(whatsNew.panelTitle, whatsNew.getPanel());
 	}
 
@@ -36,7 +32,7 @@ public class MainTabbed {
 	 * タブ自体を返す
 	 * @return
 	 */
-	public static JTabbedPane getTabbed() {
+	public JTabbedPane getTabbed() {
 		return mainTabbed;
 	}
 

@@ -10,17 +10,24 @@ package euphoria.config;
 public class Config {
 
 	/** データベース用のコンフィグ */
-	public static ConfigDB configDB;
+	public ConfigDB configDB;
 
 	/** 設定ファイルの修復が必要かどうかを判別するフラグ */
 	protected boolean isNeededFix = false;
 
 	/**
+	 * Configクラスのコンストラクタ。各設定クラスのインスタンスを生成する。
+	 */
+	public Config() {
+		// データベースの設定クラスのインスタンス
+		configDB = new ConfigDB();
+	}
+
+	/**
 	 * 全体的なConfigの読み込みを行う
 	 */
-	public static void loadConf() {
+	public void loadConf() {
 		// データベースに関する設定ファイルの読み込み
-		configDB = new ConfigDB();
 		configDB.loadDBConf();
 	}
 

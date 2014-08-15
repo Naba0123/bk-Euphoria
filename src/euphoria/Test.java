@@ -6,23 +6,27 @@ import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import euphoria.config.ConfigDB;
 import euphoria.config.DB;
 
 public class Test {
 
-	public Test() {
-		Do();
+	private DB db;
+	private ConfigDB configDB;
+
+	public Test(ConfigDB configDB_) {
+		configDB = configDB_;
+		db = new DB();
 	}
 
-	public void Do() {
-
+	public void doAction() {
 		// Databaseとの接続
-		DB.connectDB();
+		db.connectDB(configDB);
 
 		// Queryの取得
 		System.out.print("SQL文の入力をしてください ＞ ");
 		String query = inputFromKeyboard();
-		ResultSet rs = DB.executeSQLQuery(query);
+		ResultSet rs = db.executeSQLQuery(query);
 		if (rs != null) {
 			try {
 				while (rs.next()) {
@@ -37,7 +41,7 @@ public class Test {
 		}
 
 		// Databaseの切断
-		DB.closeDB();
+		db.closeDB();
 	}
 
 	/**
