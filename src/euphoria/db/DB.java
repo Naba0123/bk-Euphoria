@@ -23,7 +23,7 @@ public class DB {
 	}
 
 	/**
-	 * 与えられたSQL文を実行して結果をResultSetのオブジェクトとして返す。<br>
+	 * 与えられたSQL文を実行して結果をResultSetのオブジェクトとして返す。
 	 *
 	 * @param queryStr 実行したいSQL文
 	 * @return 実行結果。実行できない、もしくは結果が無い場合はnullを返す。
