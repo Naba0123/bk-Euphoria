@@ -14,8 +14,8 @@ public class Test {
 	private DB db;
 	private ConfigDB configDB;
 
-	public Test(ConfigDB configDB_) {
-		configDB = configDB_;
+	public Test(ConfigDB config) {
+		configDB = config;
 		db = new DB();
 	}
 

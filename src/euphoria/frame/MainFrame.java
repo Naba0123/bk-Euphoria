@@ -1,6 +1,7 @@
 package euphoria.frame;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -16,10 +17,9 @@ public class MainFrame {
 
 	/** MainFrameのタイトル */
 	private String mainFrameTitle = "Euphoria";
+
 	/** MainFrameのJFrame */
 	private JFrame frame;
-	/** MainFramenoJTabbed */
-	private Tabbed tabbed;
 	/** MainFrameの幅 */
 	private final int width = 960;
 	/** MainFrameの高さ */
@@ -27,12 +27,17 @@ public class MainFrame {
 	/** MainFrameのウィンドウサイズ変更の可否 */
 	private final boolean canResize = false;
 
+	/** MainFrameのJTabbed */
+	private SetTabbed tabbed;
+
 	/**
 	 * MainFrameのコンストラクタ。
 	 */
 	public MainFrame() {
 		// frameの定義
 		frame = new JFrame();
+		// tabbedの定義
+		tabbed = new SetTabbed();
 	}
 
 	/**
@@ -59,19 +64,12 @@ public class MainFrame {
 	}
 
 	/**
-	 * プログラム実行に必要なFrameの設定を行う。
+	 * プログラム実行に必要なFrameの設定を行う。<br>
+	 * このメソッドを実行すれば可視以外の準備が整う。
 	 */
 	public void readyFrame() {
-		// MainFrameの初期設定
-		setFrameDefault();
-		// MainFrameのコンテンツの設定
-		setFrameContents();
-	}
+		// フレームの設定
 
-	/**
-	 * MainFrameの初期設定を行う。
-	 */
-	private void setFrameDefault() {
 		// MainFrameのタイトルの設定
 		frame.setTitle(mainFrameTitle);
 		// フレーム初期サイズの設定
@@ -83,23 +81,28 @@ public class MainFrame {
 		// フレームの表示位置の設定
 		frame.setLocationRelativeTo(null);
 		// フレームのUIの設定
-		String lafClassName = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
-		try {
-			UIManager.setLookAndFeel(lafClassName);
-			SwingUtilities.updateComponentTreeUI(frame);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+		setLookAndFeel(frame);
 
-	/**
-	 * Frameのコンテンツの設定を行う
-	 */
-	private void setFrameContents() {
+		// タブの設定
+
 		// 全体のタブ
 		tabbed.readyTabbed();
 		// タブをフレームに追加
 		frame.getContentPane().add(tabbed.getTabbed(), BorderLayout.CENTER);
+	}
+
+	/**
+	 * FrameやTabbedやPanelのUIをWindowsライクに変更する
+	 * @param c UIを変更するComponent
+	 */
+	public static void setLookAndFeel(Component c) {
+		String lafClassName = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+		try {
+			UIManager.setLookAndFeel(lafClassName);
+			SwingUtilities.updateComponentTreeUI(c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

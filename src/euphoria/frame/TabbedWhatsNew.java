@@ -2,37 +2,23 @@ package euphoria.frame;
 
 import javax.swing.JPanel;
 
-public class TabbedWhatsNew {
-
-	/** Panel */
-	private JPanel panel;
-
-	/** Panelのタイトル */
-	public String panelTitle = "What's New";
+public class TabbedWhatsNew extends TabbedPanel {
 
 	/**
-	 * What's Newパネルについて設定をする
+	 * WhatsNewのコンストラクタ。
+	 */
+	TabbedWhatsNew() {
+		panelTitle = "What's New";
+		panel = new JPanel();
+	}
+
+	/**
+	 * What's Newパネルの準備をする
 	 */
 	public void readyPanel() {
-		// Panelの
+		MainFrame.setLookAndFeel(panel);
 	}
 
-	/**
-	 * PanelのTitleを返す
-	 *
-	 * @return
-	 */
-	public String getPanelTitle() {
-		return panelTitle;
-	}
 
-	/**
-	 * Panelを返す
-	 *
-	 * @return Panel
-	 */
-	public JPanel getPanel() {
-		return panel;
-	}
 
 }
