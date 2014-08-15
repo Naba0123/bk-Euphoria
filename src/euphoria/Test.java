@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import euphoria.config.ConfigDB;
-import euphoria.config.DB;
+import euphoria.db.DB;
 
 public class Test {
 

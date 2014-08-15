@@ -1,6 +1,6 @@
 package euphoria;
 
-import euphoria.config.Config;
+import euphoria.config.SetConfig;
 import euphoria.frame.MainFrame;
 
 /**
@@ -12,14 +12,14 @@ import euphoria.frame.MainFrame;
 public class Program {
 
 	/** Configクラスのインスタンス */
-	private Config config;
+	private SetConfig config;
 
 	/** MainFrameクラスのインスタンス */
 	private MainFrame frame;
 
 	public Program() {
 		// Configクラスのインスタンスの定義
-		config = new Config();
+		config = new SetConfig();
 		// MainFrameクラスのインスタンスの定義
 		frame = new MainFrame();
 	}

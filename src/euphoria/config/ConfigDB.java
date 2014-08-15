@@ -1,9 +1,13 @@
 package euphoria.config;
 
+/**
+ * データベースに関する設定を行うクラス
+ *
+ * @author PenNanban
+ *
+ */
 public class ConfigDB extends Config {
 
-	/** データベースに関する設定ファイル */
-	private ConfigFile dbConfig;
 	/** データベースに関する設定ファイルの名前 */
 	private final String dbConfigFilename = "dbConf.xml";
 	/** Hostのキー */
@@ -27,26 +31,36 @@ public class ConfigDB extends Config {
 	/** データベース名の値 */
 	public String dbName = "database";
 
+	/** 自動で生成される設定ファイルに記載するコメント */
+	private String configFileComment = "自動作成されたデータベース用設定ファイル";
+
 	/**
-	 * データベースに関する設定ファイルの読み込みを行う
+	 * コンストラクタ。<br>
+	 * ConfigFileのインスタンスの定義を行う。
+	 */
+	public ConfigDB() {
+		config = new ConfigFile();
+	}
+
+	/**
+	 * データベースに関する設定ファイルの読み込みを行う。
 	 */
 	public void loadDBConf() {
 		isNeededFix = false;
-		dbConfig = new ConfigFile();
-		if (dbConfig.loadConf(dbConfigFilename)) {
-			dbHost = readValue(dbConfig, dbHostKey, dbHost);
-			dbPort = readValue(dbConfig, dbPortKey, dbPort);
-			dbUsername = readValue(dbConfig, dbUsernameKey, dbUsername);
-			dbPassword = readValue(dbConfig, dbPasswordKey, dbPassword);
-			dbName = readValue(dbConfig, dbNameKey, dbName);
-			endReadValue(dbConfig);
+		if (config.loadConf(dbConfigFilename)) {
+			dbHost = readValue(dbHostKey, dbHost);
+			dbPort = readValue(dbPortKey, dbPort);
+			dbUsername = readValue(dbUsernameKey, dbUsername);
+			dbPassword = readValue(dbPasswordKey, dbPassword);
+			dbName = readValue(dbNameKey, dbName);
+			endReadValue();
 		} else {
-			dbConfig.setProperty(dbHostKey, dbHost);
-			dbConfig.setProperty(dbUsernameKey, dbUsername);
-			dbConfig.setProperty(dbPasswordKey, dbPassword);
-			dbConfig.setProperty(dbPortKey, dbPort);
-			dbConfig.setProperty(dbNameKey, dbName);
-			createConfigFile(dbConfig, "自動作成されたデータベース用設定ファイル");
+			config.setProperty(dbHostKey, dbHost);
+			config.setProperty(dbUsernameKey, dbUsername);
+			config.setProperty(dbPasswordKey, dbPassword);
+			config.setProperty(dbPortKey, dbPort);
+			config.setProperty(dbNameKey, dbName);
+			createConfigFile(configFileComment);
 		}
 	}
 

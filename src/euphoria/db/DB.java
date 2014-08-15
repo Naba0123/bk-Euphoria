@@ -1,10 +1,12 @@
-package euphoria.config;
+package euphoria.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import euphoria.config.ConfigDB;
 
 public class DB {
 
