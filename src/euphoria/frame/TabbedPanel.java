@@ -2,12 +2,26 @@ package euphoria.frame;
 
 import javax.swing.JPanel;
 
+/**
+ * タブ内に配置するパネルのクラス。このクラスを継承して実際のパネルを作成する。
+ *
+ * @author PenNanban
+ *
+ */
 public class TabbedPanel {
 
 	/** panel */
 	protected JPanel panel;
 	/** panelのタイトル */
-	protected String panelTitle = "No Panel Title";
+	protected String panelTitle;
+
+	/**
+	 * Panelの定義とデフォルトTitleの設定
+	 */
+	public TabbedPanel() {
+		panel = new JPanel();
+		panelTitle = "No Panel Title";
+	}
 
 	/**
 	 * Panelを返す
@@ -33,7 +47,28 @@ public class TabbedPanel {
 	 * @param title
 	 */
 	public void setPanelTitle(String title) {
-		panelTitle = title;
+		if (!title.isEmpty()) {
+			panelTitle = title;
+		}
+	}
+
+	/**
+	 * TabbedPanelの準備をする
+	 */
+	public void setPanel() {
+		// UIの変更
+		MainFrame.setLookAndFeel(panel);
+		// コンテンツの定義
+		defineContents();
+		// コンテンツの追加
+		addContents();
+	}
+
+	protected void defineContents() {
+
+	}
+
+	protected void addContents() {
 	}
 
 }

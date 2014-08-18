@@ -1,22 +1,34 @@
 package euphoria.frame;
 
-import javax.swing.JPanel;
 
+
+/**
+ * What's Newパネル
+ *
+ * @author PenNanban
+ *
+ */
 public class TabbedWhatsNew extends TabbedPanel {
 
 	/**
-	 * WhatsNewのコンストラクタ。
+	 * What's Newパネルのコンストラクタ。
 	 */
 	TabbedWhatsNew() {
 		panelTitle = "What's New";
-		panel = new JPanel();
 	}
 
 	/**
-	 * What's Newパネルの準備をする
+	 * What's Newパネルのコンテンツを定義する
 	 */
-	public void readyPanel() {
-		MainFrame.setLookAndFeel(panel);
+	protected void defineContents() {
+
+    }
+
+	/**
+	 * What's Newパネルのコンテンツをパネルに追加する
+	 */
+	protected void addContents() {
+
 	}
 
 

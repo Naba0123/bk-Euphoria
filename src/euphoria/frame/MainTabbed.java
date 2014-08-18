@@ -8,7 +8,7 @@ import javax.swing.JTabbedPane;
  * @author PenNanban
  *
  */
-public class SetTabbed {
+public class MainTabbed {
 
 	/** Tabbed */
 	private JTabbedPane mainTabbed;
@@ -19,7 +19,7 @@ public class SetTabbed {
 	 * MainTabbedのコンストラクタ。<br>
 	 * MainTabbedとMainTabbedに追加するPanelの定義をする。
 	 */
-	public SetTabbed() {
+	public MainTabbed() {
 		// タブの定義
 		mainTabbed = new JTabbedPane();
 		// What's Newの定義
@@ -29,10 +29,10 @@ public class SetTabbed {
 	/**
 	 * タブに追加するPanelの設定・タブへの追加を行う。
 	 */
-	public void readyTabbed() {
+	public void setTabbed() {
 		MainFrame.setLookAndFeel(mainTabbed);
 		// Panelの設定
-		whatsNew.readyPanel();
+		whatsNew.setPanel();
 		// Panelの追加
 		mainTabbed.addTab(whatsNew.panelTitle, whatsNew.getPanel());
 	}

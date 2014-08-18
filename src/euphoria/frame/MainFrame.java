@@ -28,7 +28,7 @@ public class MainFrame {
 	private final boolean canResize = false;
 
 	/** MainFrameのJTabbed */
-	private SetTabbed tabbed;
+	private MainTabbed tabbed;
 
 	/**
 	 * MainFrameのコンストラクタ。
@@ -37,7 +37,7 @@ public class MainFrame {
 		// frameの定義
 		frame = new JFrame();
 		// tabbedの定義
-		tabbed = new SetTabbed();
+		tabbed = new MainTabbed();
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class MainFrame {
 		// タブの設定
 
 		// 全体のタブ
-		tabbed.readyTabbed();
+		tabbed.setTabbed();
 		// タブをフレームに追加
 		frame.getContentPane().add(tabbed.getTabbed(), BorderLayout.CENTER);
 	}
